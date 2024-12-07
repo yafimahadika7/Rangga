@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            background: #fff;
+            width: 320px;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .calculator-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .display {
+            width: 100%;
+            height: 60px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: right;
+            line-height: 60px;
+            padding: 0 15px;
+            color: #333;
+            box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+
+        button {
+            height: 50px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        button.operator {
+            background-color: #ff6b6b;
+            color: #fff;
+        }
+
+        button.number {
+            background-color: #e4e5e7;
+            color: #333;
+        }
+
+        button.special {
+            background-color: #1dd1a1;
+            color: #fff;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+        button:active {
+            transform: scale(1);
+        }
+
+        button.equal {
+            background-color: #00c6ff;
+            color: #fff;
+            grid-column: span 2;
+        }
+
+        button.clear {
+            background-color: #ff4757;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="calculator-title">Calculator</div>
+        <div id="display" class="display">0</div>
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="operator" onclick="appendOperator('/')">÷</button>
+            <button class="operator" onclick="appendOperator('*')">×</button>
+            <button class="operator" onclick="appendOperator('-')">−</button>
+            <button class="number" onclick="appendNumber('7')">7</button>
+            <button class="number" onclick="appendNumber('8')">8</button>
+            <button class="number" onclick="appendNumber('9')">9</button>
+            <button class="operator" onclick="appendOperator('+')">+</button>
+            <button class="number" onclick="appendNumber('4')">4</button>
+            <button class="number" onclick="appendNumber('5')">5</button>
+            <button class="number" onclick="appendNumber('6')">6</button>
+            <button class="special" onclick="calculateSqrt()">√</button>
+            <button class="number" onclick="appendNumber('1')">1</button>
+            <button class="number" onclick="appendNumber('2')">2</button>
+            <button class="number" onclick="appendNumber('3')">3</button>
+            <button class="special" onclick="calculateSquare()">x²</button>
+            <button class="number" onclick="appendNumber('0')">0</button>
+            <button class="number" onclick="appendNumber('.')">.</button>
+            <button class="equal" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+
+        function appendNumber(number) {
+            if (display.innerText === '0' || display.innerText === 'Error') {
+                display.innerText = number;
+            } else {
+                display.innerText += number;
+            }
+        }
+
+        function appendOperator(operator) {
+            const lastChar = display.innerText.slice(-1);
+            if ('+-*/'.includes(lastChar)) {
+                display.innerText = display.innerText.slice(0, -1) + operator;
+            } else {
+                display.innerText += operator;
+            }
+        }
+
+        function clearDisplay() {
+            display.innerText = '0';
+        }
+
+        function calculateResult() {
+            try {
+                display.innerText = eval(display.innerText);
+            } catch {
+                display.innerText = 'Error';
+            }
+        }
+
+        function calculateSqrt() {
+            try {
+                display.innerText = Math.sqrt(eval(display.innerText));
+            } catch {
+                display.innerText = 'Error';
+            }
+        }
+
+        function calculateSquare() {
+            try {
+                display.innerText = Math.pow(eval(display.innerText), 2);
+            } catch {
+                display.innerText = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>

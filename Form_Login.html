@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: linear-gradient(135deg, #1c1c5f, #163e2d); overflow: hidden; font-family: Arial, sans-serif; color: #fff;">
+
+    <!-- Hologram effect circles -->
+    <div style="position: absolute; top: 20%; left: 10%; width: 150px; height: 150px; background: rgba(0, 123, 255, 0.4); border-radius: 50%; filter: blur(100px);"></div>
+    <div style="position: absolute; bottom: 15%; right: 20%; width: 200px; height: 200px; background: rgba(255, 150, 255, 0.4); border-radius: 50%; filter: blur(100px);"></div>
+    <div style="position: absolute; top: 60%; right: 40%; width: 120px; height: 120px; background: rgba(0, 255, 149, 0.3); border-radius: 50%; filter: blur(80px);"></div>
+
+    <!-- Login Form with Dark Mode -->
+    <div style="position: relative; width: 350px; padding: 40px; background: #000000; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); text-align: center; z-index: 1; border: 1px solid rgba(255, 255, 255, 0.1);">
+        <h2 style="margin-bottom: 20px; color: #fff;">Login</h2>
+        <form>
+            <div style="position: relative; margin: 30px 0;">
+                <input type="text" required style="width: 100%; padding: 10px; background: #333; border: 1px solid #444; outline: none; font-size: 16px; border-radius: 5px; color: #fff;">
+                <label style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); color: rgb(255, 255, 255); font-size: 16px; pointer-events: none;">Username</label>
+            </div>
+            <div style="position: relative; margin: 30px 0;">
+                <input type="password" required style="width: 100%; padding: 10px; background: #333; border: 1px solid #444; outline: none; font-size: 16px; border-radius: 5px; color: #fff;">
+                <label style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); color: rgb(255, 255, 255); font-size: 16px; pointer-events: none;">Password</label>
+            </div>
+            <button type="submit" style="width: 100%; padding: 10px; background: linear-gradient(45deg, #8ec5fc, #e0c3fc); color: #2a2a3c; font-size: 16px; border: none; outline: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Login</button>
+            <p style="margin-top: 20px; font-size: 14px;">Belum Punya akun ?? <a href="#" style="color: #8ec5fc; text-decoration: none;">Daftar disini !!</a></p>
+        </form>
+    </div>
+</body>
+</html>
